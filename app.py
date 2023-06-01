@@ -7,18 +7,24 @@ global cog_key
 global cog_region
 
 from dotenv import load_dotenv
-load_dotenv()
+
+
+app= Flask (__name__)
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 try:
+    load_dotenv()
     cog_key = os.environ.get("COG_SERVICE_KEY")
     cog_region = os.environ.get("COG_SERVICE_REGION")      
     translator_endpoint = 'https://api.cognitive.microsofttranslator.com'   
 except Exception as ex:        
     print(ex)
 
-app = Flask(__name__)
 
-@app.route(' ', methods=['GET', 'POST'])
+
+@app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
         text = request.form['text']
