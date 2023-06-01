@@ -6,6 +6,9 @@ global translator_endpoint
 global cog_key    
 global cog_region
 
+from dotenv import load_dotenv
+load_dotenv()
+
 try:
     cog_key = os.environ.get("COG_SERVICE_KEY")
     cog_region = os.environ.get("COG_SERVICE_REGION")      
